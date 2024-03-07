@@ -10,7 +10,7 @@ song_api = 'https://api.bilibili.com/audio/music-service-c/url?mid=6433840&mobi_
 
 
 def getsong(id):
-    song_info = json.loads(requests.get(song_api+str(id)).text)['data']
+    song_info = json.loads(requests.get(song_api+str(id), headers=headers).text)['data']
     song_title = song_info['title']
     song_url = song_info['cdns'][0]
     song_content = requests.get(song_url, headers=headers).content
